@@ -32,6 +32,7 @@ get miembros(){
 agregarMiembro(personaje) {
         if (personaje instanceof Personaje) {
             this.miembros.push(personaje);
+            console.log(personaje.nombre + ' ha sido añadido a la Casa ' +this.nombre);
         } else {
              console.warn("Solo se pueden agregar objetos Personaje.");
         }
@@ -45,6 +46,7 @@ listarMiembros(){
 
     }
 }
+
 
 
 

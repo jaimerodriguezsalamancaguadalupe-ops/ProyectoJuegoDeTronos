@@ -1,63 +1,53 @@
-import { Casa } from "./Casa.js";
 import { Arma } from "./Arma.js";
-import { Reino } from "./Reino.js";
 import { Personaje } from "./personaje.js";
+import { Casa } from "./Casa.js";
+import { Reino } from "./Reino.js";
 
-// Instanciar casas 
-const Stark= new Casa ('Stark', '');
-const Lannister= new Casa('Lannister', '');
+const casa1= new Casa ('Casa Stark')
+const casa2= new Casa ('Casa Lannister')
 
-// Instanciar armas
-const garra= new Arma ('Garra', 25, 'Espada');
-const aguja= new Arma ('Aguja', 15, 'Espada');
+const reino1= new Reino ('Poniente');
+const pers1= new Personaje ('Jaime Lannister');
+const pers2= new Personaje ('Jon Snow');
+const pers3= new Personaje ('Arya Stark');
+const arma1= new Arma ('Garra', 'espada', 25);
+const arma2= new Arma ('Aguja', 'espada', 15);
 
-// Instanciar reinos
-const poniente= new Reino ('Poniente');
 
-// Instancia personajes
-const Jon= new Personaje ('Jon Snow', 28, 'Stark');
-const Arya= new Personaje ('Arya Stark', 38, 'Stark');
-const Jaime= new Personaje ('Jaime Lannister', 40, 'Lannister');
 
-// Agregar casas al reino
+// Clase Reino
+reino1.agregarCasa(casa1);
+reino1.agregarCasa(casa2);
+reino1.agregarRey(pers1);
 
-poniente.agregarCasa(Stark);
-poniente.agregarCasa(Lannister);
+// Clase Personaje
 
-// Equipar armas
+pers2.equiparArma(arma1);
+pers3.equiparArma(arma2);   
 
-Jon.equiparArma(garra);
-Arya.equiparArma(aguja);
+// Clase Casa
 
-// Agregar miembros a la casa
-Stark.agregarMiembro(Jon);
-Stark.agregarMiembro(Arya);
-Lannister.agregarMiembro(Jaime);
+casa1.agregarMiembros(pers2);
+casa1.agregarMiembros(pers3);
+casa2.agregarMiembros(pers1);
 
-// El rey es
 
-poniente.agregarRey(Jaime);
+// Clase Reino 
+reino1.agregarRey(pers1);
+reino1.listarCasas();
 
-// Mostrar casas del reino
-console.log('Casas del reino de ' +poniente.nombre);
-poniente.listarCasas();
+console.log('El rey actual es');
+reino1.mostrarInformRey(pers1,casa2);
 
-// Mostrar miembros
-Stark.listarMiembros();
-Lannister.listarMiembros();
+// Clase Casa
+casa1.listarMiembros();
 
-// Presentaciones de la clase Personaje
+console.log('Presentaciones:')
 
-console.log('Presentaciones:');
-Jon.agregarCasa(Stark);
-Jon.mensajePresent();
-Arya.agregarCasa(Stark);
-Arya.mensajePresent();
-Jaime.agregarCasa(Lannister);
-Jaime.mensajePresent();
+pers2.mensajePresentacion(casa1);
+pers3.mensajePresentacion(casa1);
+pers1.mensajePresentacion(casa2);
+console.log('Armas:')
 
-// Clase Arma
-console.log('Armas');
-console.log(garra.descripcion());
-console.log(aguja.descripcion());
-
+arma1.descripcion();
+arma2.descripcion();

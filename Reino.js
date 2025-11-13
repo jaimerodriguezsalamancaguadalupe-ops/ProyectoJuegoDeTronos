@@ -24,38 +24,51 @@ get rey(){
     return this.#rey;
 }
 
+agregarRey(nombreRey){
+
+    if (nombreRey instanceof Personaje){
+        console.log(nombreRey.getNombre + ' ha sido proclamado rey de ' +this.#nombre);
+    } else{
+        console.log('No hay rey');
+    }
+
+}
+
+
 agregarCasa(casa){
     if (casa instanceof Casa){
-        this.#casaArray.push(casa);
-        console.log('La Casa ' + casa.nombre + ' ha sido añadida al Reino ' +this.#nombre);
-    }
-}
-agregarRey(personaje){
-    if (personaje instanceof Personaje){
-        this.#rey = personaje;
-        console.log(personaje.nombre + ' ha sido proclamado rey de ' + this.#nombre);
-    }
-}
-listarCasas(){
-    for (let misCasas of this.#casaArray) {
-        console.log('- Casa ' +misCasas.nombre);
+        this.#casas.push(casa); 
+        console.log('La Casa ' +casa.getNombre + ' ha sido añadido al Reino ' +this.#nombre);
+    } else{
+        console.log('Esta casa no pertenece a ningun reino');
     }
 }
 
-/* this.#casaArray.forEach((casa)=>{
-    console.log(casa.nombre)
-}) */
-mostrarInfoRey(){
-    if (this.#rey){
-        console.log('El rey actual es ' + this.#nombre + 'de la casa' +this.#rey.casa.nombre);
+listarCasas(){   
+    
+    console.log('Casas del Reino ' + this.#nombre); 
+    
+    if (this.#casas.length > 0) {
+        for (let misCasas of this.#casas) { 
+            console.log('- ' +misCasas.getNombre);
+        }
+    } else {
+        console.log('Error, no se ha añadido ninguna casa'); 
+    }
+}
+mostrarInformRey(rey,casa){
+   this.#rey=rey;
+    if (casa instanceof Casa && this.#rey instanceof Personaje){
+        this.#casas.push(casa);
+        console.log('El rey actual es ' + this.#rey.getNombre + ' de la ' +casa.getNombre);
     }
     else{
         console.log('No hay rey actualmente');
     }
 }
 
-
 }
+
 
 
 

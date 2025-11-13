@@ -52,17 +52,13 @@ agregarCasa(casa){
 }
 
 
-mensajePresent() {
-  if (this.#casaArray.length > 0) {
-    let nombresCasas = "";
-    for (let i = 0; i < this.#casaArray.length; i++) {
-      if (i > 0) nombresCasas += " y ";
-      nombresCasas += this.#casaArray[i].nombre;
+mensajePresentacion(casa){
+    if (casa instanceof Casa){
+        console.log('Soy ' +this.#nombre + ' de la ' +casa.getNombre);
     }
-    console.log(`Soy ${this.#nombre} de la Casa ${nombresCasas}.`);
-  } else {
-    console.log(`Soy ${this.#nombre} y no tengo casa.`);
-  }
+    else{
+        console.log('Error, no pertenece a ninguna casa');
+    }
 }
 equiparArma(arma){
     if (arma instanceof Arma){
@@ -80,6 +76,7 @@ pershamuerto() {
 }
 
 }
+
 
 
 
